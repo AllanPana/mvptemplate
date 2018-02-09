@@ -1,5 +1,7 @@
 package ie.allan.mvptemplate.baseMVP;
 
+import ie.allan.mvptemplate.data.DataManager;
+
 /**
  * Created by allan on 01/03/17.
  * BasePresenter class that implements the Presenter interface and provides a base implementation for
@@ -10,6 +12,11 @@ package ie.allan.mvptemplate.baseMVP;
 public class BasePresenter<T extends MVPView> implements Presenter<T> {
 
     private T mMvpView;
+    private DataManager dataManager;
+
+    public BasePresenter(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
 
     @Override
     public void attachView(T mVPView) {
@@ -31,6 +38,10 @@ public class BasePresenter<T extends MVPView> implements Presenter<T> {
 
     public void checkViewAttached() {
         if (!isViewAttached()) throw new MvpViewNotAttachedException();
+    }
+
+    public DataManager getDataManager() {
+        return dataManager;
     }
 
     public static class MvpViewNotAttachedException extends RuntimeException {

@@ -17,7 +17,7 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment {
 
-    private Unbinder mUnbinder;
+    public Unbinder mUnbinder;
 
     @Nullable
     @Override
